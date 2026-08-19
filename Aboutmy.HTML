@@ -1,0 +1,1015 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="description"
+    content="ByNatasja — één verhaal over creativiteit, webdesign, verhalen, reizen en persoonlijke groei."
+  >
+
+  <title>ByNatasja — Eén verhaal</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400&family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --black: #080e0e;
+      --deep: #10201d;
+      --forest: #294438;
+      --green: #567567;
+      --cream: #eeeae0;
+      --sand: #d9d0c1;
+      --mist: #a8b5ae;
+      --gold: #b99d5e;
+      --line: rgba(238, 234, 224, 0.18);
+
+      --serif: "Playfair Display", Georgia, serif;
+      --sans: "DM Sans", Arial, sans-serif;
+      --mono: "DM Mono", monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--black);
+      color: var(--cream);
+      font-family: var(--sans);
+      overflow-x: hidden;
+    }
+
+    .grain {
+      position: fixed;
+      inset: 0;
+      z-index: 30;
+      pointer-events: none;
+      opacity: 0.05;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    .progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 100;
+      width: 0;
+      height: 3px;
+      background: var(--gold);
+    }
+
+    .header {
+      position: fixed;
+      z-index: 50;
+      top: 0;
+      left: 0;
+      right: 0;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      padding: 25px 6vw;
+      transition: 0.4s ease;
+    }
+
+    .header.scrolled {
+      padding: 17px 6vw;
+      background: rgba(8, 14, 14, 0.9);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(15px);
+    }
+
+    .logo {
+      color: var(--cream);
+      font: 17px var(--mono);
+      letter-spacing: 0.08em;
+      text-decoration: none;
+    }
+
+    .logo span {
+      color: var(--gold);
+    }
+
+    .navigation {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .navigation a {
+      color: var(--mist);
+      font: 11px var(--mono);
+      letter-spacing: 0.1em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .navigation a:hover {
+      color: var(--cream);
+    }
+
+    .navigation .nav-cta {
+      padding: 11px 15px;
+      border: 1px solid var(--line);
+      color: var(--cream);
+    }
+
+    .menu-toggle {
+      display: none;
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+    }
+
+    .menu-toggle i {
+      display: block;
+      width: 29px;
+      height: 1px;
+      margin: 7px 0;
+      background: var(--cream);
+    }
+
+    .eyebrow {
+      margin-bottom: 27px;
+      color: var(--mist);
+      font: 10px var(--mono);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: var(--serif);
+      font-weight: 400;
+    }
+
+    em {
+      color: var(--gold);
+      font-style: italic;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100vh;
+
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      align-items: center;
+      gap: 8vw;
+
+      padding: 150px 10vw 100px;
+      overflow: hidden;
+
+      background:
+        linear-gradient(110deg, rgba(8, 14, 14, 0.96) 40%, rgba(8, 14, 14, 0.25)),
+        url("file.jpg") center / cover;
+    }
+
+    .hero::after {
+      position: absolute;
+      inset: 0;
+      content: "";
+      background: radial-gradient(
+        circle at 70% 45%,
+        rgba(73, 111, 91, 0.25),
+        transparent 35%
+      );
+    }
+
+    .hero-copy,
+    .hero-card {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero h1 {
+      max-width: 850px;
+      font-size: clamp(62px, 9vw, 135px);
+      line-height: 0.88;
+      letter-spacing: -0.07em;
+    }
+
+    .hero-intro {
+      max-width: 480px;
+      margin-top: 35px;
+      color: var(--mist);
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    .hero-links {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+      margin-top: 45px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 16px 21px;
+      color: var(--black);
+      background: var(--gold);
+      font: 11px var(--mono);
+      letter-spacing: 0.1em;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: 0.3s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 30px rgba(185, 157, 94, 0.25);
+    }
+
+    .text-link {
+      color: var(--cream);
+      font: 11px var(--mono);
+      letter-spacing: 0.1em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .hero-card {
+      min-height: 550px;
+      display: flex;
+      align-items: end;
+      padding: 30px;
+      border: 1px solid rgba(185, 157, 94, 0.5);
+      background:
+        linear-gradient(transparent 30%, rgba(5, 10, 9, 0.85)),
+        url("2.jpg") center / cover;
+    }
+
+    .hero-card-content {
+      max-width: 430px;
+    }
+
+    .hero-card h2 {
+      font-size: clamp(40px, 5vw, 70px);
+      line-height: 0.95;
+    }
+
+    .hero-card p {
+      margin-top: 18px;
+      color: var(--mist);
+      line-height: 1.7;
+    }
+
+    .section {
+      padding: 145px 10vw;
+    }
+
+    .about {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 10vw;
+
+      color: var(--black);
+      background: var(--cream);
+    }
+
+    .about h2,
+    .worlds h2,
+    .travel h2,
+    .stories h2,
+    .contact h2 {
+      font-size: clamp(50px, 7vw, 95px);
+      line-height: 0.95;
+      letter-spacing: -0.06em;
+    }
+
+    .about-content {
+      max-width: 620px;
+    }
+
+    .about-content .lead {
+      margin-bottom: 30px;
+      font: 400 27px / 1.55 var(--serif);
+    }
+
+    .about-content p:not(.lead) {
+      margin-bottom: 25px;
+      color: #5b6962;
+      font-size: 16px;
+      line-height: 1.85;
+    }
+
+    .line-link {
+      display: inline-block;
+      margin-top: 18px;
+      padding-bottom: 9px;
+      border-bottom: 1px solid var(--black);
+      color: var(--black);
+      font: 11px var(--mono);
+      letter-spacing: 0.1em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .line-link span {
+      margin-left: 10px;
+      color: var(--gold);
+    }
+
+    .worlds {
+      color: var(--cream);
+      background: var(--deep);
+    }
+
+    .worlds-header,
+    .stories-header {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 30px;
+      margin-bottom: 65px;
+    }
+
+    .worlds-header p,
+    .stories-header p {
+      max-width: 260px;
+      color: var(--mist);
+      font: 12px / 1.7 var(--mono);
+    }
+
+    .world-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .world-card {
+      min-height: 400px;
+      display: flex;
+      flex-direction: column;
+      justify-content: end;
+      padding: 30px;
+      border: 1px solid var(--line);
+      text-decoration: none;
+      background-position: center;
+      background-size: cover;
+      transition: 0.5s ease;
+    }
+
+    .world-card:nth-child(1) {
+      background-image: 
+        linear-gradient(transparent 25%, rgba(5, 10, 9, 0.9)),
+        url("logo-bynatasja.png");
+    }
+
+    .world-card:nth-child(2) {
+      background-image: 
+        linear-gradient(transparent 25%, rgba(5, 10, 9, 0.9)),
+        url("logo-nova.png"); 
+    }
+
+    .world-card:nth-child(3) {
+      background-image:
+        linear-gradient(135deg, #304d3e, #10201d),
+        url("logo-natasspeaks.png"); 
+    }
+
+    .world-card:nth-child(4) {
+      background-image: 
+        linear-gradient(135deg, #596c6e, #142423),
+        url("21ECDE32-33D6-49DA-9970-DCD8FE911F5C.PNG");
+    }
+
+    .world-card:hover {
+      transform: translateY(-7px);
+      border-color: var(--gold);
+    }
+
+    .world-number {
+      margin-bottom: 14px;
+      color: var(--gold);
+      font: 11px var(--mono);
+    }
+
+    .world-card h3 {
+      font-size: 44px;
+    }
+
+    .world-card p {
+      max-width: 400px;
+      margin-top: 13px;
+      color: var(--mist);
+      line-height: 1.7;
+    }
+
+    .travel {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 10vw;
+      align-items: center;
+
+      color: var(--cream);
+      background: var(--forest);
+    }
+
+    .travel-image {
+      min-height: 610px;
+      background:
+        linear-gradient(transparent 25%, rgba(5, 10, 9, 0.7)),
+        url("2.jpg") center / cover;
+    }
+
+    .travel-content p:not(.eyebrow) {
+      max-width: 480px;
+      margin: 30px 0;
+      color: var(--mist);
+      font-size: 16px;
+      line-height: 1.85;
+    }
+
+    .travel-note {
+      margin-top: 40px;
+      color: var(--gold);
+      font: 11px var(--mono);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .stories {
+      color: var(--black);
+      background: var(--sand);
+    }
+
+    .story-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .story-card {
+      min-height: 350px;
+      display: flex;
+      flex-direction: column;
+      justify-content: end;
+      padding: 25px;
+      color: var(--cream);
+      text-decoration: none;
+      background: var(--forest);
+      transition: 0.4s ease;
+    }
+
+    .story-card:hover {
+      transform: translateY(-7px);
+      background: var(--deep);
+    }
+
+    .story-card:nth-child(2) {
+      background: var(--deep);
+    }
+
+    .story-card:nth-child(3) {
+      background: #526665;
+    }
+
+    .story-tag {
+      margin-bottom: 15px;
+      color: var(--gold);
+      font: 10px var(--mono);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .story-card h3 {
+      font-size: 32px;
+      line-height: 1.05;
+    }
+
+    .story-card p {
+      margin-top: 13px;
+      color: var(--mist);
+      font-size: 14px;
+      line-height: 1.65;
+    }
+
+    .contact {
+      text-align: center;
+      background: var(--black);
+    }
+
+    .contact h2 {
+      font-size: clamp(58px, 8vw, 115px);
+    }
+
+    .contact p:not(.eyebrow) {
+      max-width: 570px;
+      margin: 35px auto;
+      color: var(--mist);
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    .contact-mail {
+      display: inline-block;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--gold);
+      color: var(--cream);
+      font: 19px var(--mono);
+      text-decoration: none;
+    }
+
+    .contact-mail span {
+      margin-left: 12px;
+      color: var(--gold);
+    }
+
+    footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 27px 6vw;
+      color: var(--mist);
+      background: #050909;
+      font: 10px var(--mono);
+    }
+
+    footer a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    footer div {
+      display: flex;
+      gap: 20px;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(25px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 800px) {
+      .header {
+        padding: 22px 7vw;
+      }
+
+      .menu-toggle {
+        display: block;
+        position: relative;
+        z-index: 60;
+      }
+
+      .navigation {
+        position: fixed;
+        inset: 0;
+
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+
+        padding: 12vw;
+        gap: 28px;
+        background: var(--black);
+
+        transform: translateX(100%);
+        transition: 0.4s ease;
+      }
+
+      .navigation.open {
+        transform: translateX(0);
+      }
+
+      .navigation a {
+        font-size: 16px;
+      }
+
+      .hero,
+      .about,
+      .travel {
+        display: block;
+        padding: 100px 7vw;
+      }
+
+      .hero h1 {
+        font-size: clamp(58px, 16vw, 105px);
+      }
+
+      .hero-card {
+        min-height: 450px;
+        margin-top: 60px;
+      }
+
+      .worlds,
+      .stories,
+      .section {
+        padding: 100px 7vw;
+      }
+
+      .worlds-header,
+      .stories-header {
+        display: block;
+      }
+
+      .worlds-header p,
+      .stories-header p {
+        margin-top: 24px;
+      }
+
+      .world-grid,
+      .story-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .world-card {
+        min-height: 350px;
+      }
+
+      .travel-image {
+        min-height: 450px;
+        margin-bottom: 60px;
+      }
+
+      footer {
+        display: block;
+        text-align: center;
+      }
+
+      footer p {
+        margin: 17px 0;
+      }
+
+      footer div {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="grain"></div>
+  <div class="progress" id="progress"></div>
+
+  <header class="header" id="header">
+    <a href="#home" class="logo">
+      <span>BY</span>NATASJA
+    </a>
+
+    <button
+      class="menu-toggle"
+      id="menuToggle"
+      aria-label="Menu openen"
+      aria-expanded="false"
+    >
+      <i></i>
+      <i></i>
+    </button>
+
+    <nav class="navigation" id="navigation">
+      <a href="index.html">Home</a>
+      <a href="Aboutmy.HTML">Over mij</a>
+      <a href="#werelden">Werelden</a>
+      <a href="natasspeaks.html">Verhalen</a>
+      <a href="#contact" class="nav-cta">Samenwerken ↗</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="hero" id="home">
+      <div class="hero-copy reveal">
+        <p class="eyebrow">ByNatasja — één verhaal</p>
+
+        <h1>
+          Ruimte voor<br>
+          <em>jouw verhaal.</em>
+        </h1>
+
+        <p class="hero-intro">
+          Schrijver, reiziger, ondernemer— en iemand die gelooft 
+          dat elk verhaal het verdient om gehoord te worden.
+        </p>
+
+        <div class="hero-links">
+          <a class="button" href="#over-mij">
+            Ontdek mijn verhaal ↗
+          </a>
+
+          <a class="text-link" href="#werelden">
+            Bekijk mijn werelden
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-card reveal">
+        <div class="hero-card-content">
+          <p class="eyebrow">Welkom in mijn wereld</p>
+
+          <h2>
+            Alles wat ik maak,
+            begint met een verhaal.
+          </h2>
+
+          <p>
+            ByNatasja is de plek waar mijn werk, creativiteit,
+            woorden en dromen samenkomen.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section about" id="over-mij">
+      <div class="about-title reveal">
+        <p class="eyebrow">Over mij</p>
+
+        <h2>
+          Hello!<br>
+          Ik ben<br>
+          <em>Natasja.</em>
+        </h2>
+      </div>
+
+      <div class="about-content reveal">
+        <p class="lead">
+          Mijn naam is Natasja Schut en ik ben begonnen met
+          ByNatasja omdat ik mijn verhaal wil vertellen en delen
+          met de wereld.
+        </p>
+
+        <p>
+          ByNatasja is mijn hoofdbedrijf. Vanuit hier laat ik zien
+          wie ik ben, wat ik maak en waar ik voor sta. Het is de plek
+          waar mijn persoonlijke verhaal samenkomt met mijn werk
+          en mijn creativiteit.
+        </p>
+
+        <p>
+          Ik blijf groeien, leren en ontdekken. Stap voor stap,
+          op mijn eigen tempo. Mijn reis is begonnen, maar zeker
+          nog lang niet voorbij.
+        </p>
+
+        <a class="line-link" href="#contact">
+          Maak kennis
+          <span>↗</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="section worlds" id="werelden">
+      <div class="worlds-header reveal">
+        <div>
+          <p class="eyebrow">The house of ByNatasja</p>
+
+          <h2>
+            Vier werelden.<br>
+            <em>Eén hart.</em>
+          </h2>
+        </div>
+
+        <p>
+          Verschillende richtingen,
+          verbonden door één persoonlijke visie.
+        </p>
+      </div>
+
+      <div class="world-grid">
+
+        <a href="#contact" class="world-card reveal">
+          <span class="world-number">01 — PERSONAL BRAND</span>
+
+          <h3>ByNatasja</h3>
+
+          <p>
+            Mijn persoonlijke merk en de plek waar alles samenkomt:
+            mijn verhaal, werk en creativiteit.
+          </p>
+        </a>
+
+        <a href="#contact" class="world-card reveal">
+          <span class="world-number">02 — DIGITAL STUDIO</span>
+
+          <h3>Nova</h3>
+
+          <p>
+            Webdesign, digitale ondersteuning en creatieve richting
+            voor ondernemers met een visie.
+          </p>
+        </a>
+
+        <a href="#contact" class="world-card reveal">
+          <span class="world-number">03 — STORIES & WORDS</span>
+
+          <h3>NatasSpeaks</h3>
+
+          <p>
+            Verhalen die raken, inspireren en ondersteunen bij het
+            leven, ondernemen en groeien.
+          </p>
+        </a>
+
+        <a href="#contact" class="world-card reveal">
+          <span class="world-number">04 — SLOW TRAVEL</span>
+
+          <h3>TravelByNatasja</h3>
+
+          <p>
+            Mijn liefde voor reizen, schoonheid en de inspiratie
+            die ontstaat wanneer je nieuwe plaatsen ontdekt.
+          </p>
+        </a>
+
+      </div>
+    </section>
+
+    <section class="section travel">
+      <div class="travel-image reveal">
+        <img src="natas.jpg" alt="Natasja schut" />
+      </div>
+
+      <div class="travel-content reveal">
+        <p class="eyebrow">Mijn leven</p>
+
+        <h2>
+          De wereld<br>
+          als <em>inspiratie.</em>
+        </h2>
+
+        <p>
+          In mijn dagelijks leven geniet ik van de kleine en grote momenten.
+          Ik ga graag uit met vrienden, ben veel met mijn vriend en breng
+          tijd door met mijn familie.
+        </p>
+
+        <p>
+          Reizen is voor mij een enorme bron van inspiratie en schoonheid.
+          Het laat mij anders kijken en geeft mij steeds nieuwe verhalen
+          om te vertellen.
+        </p>
+
+        <div class="travel-note">
+          Lochem · Worldwide · Always discovering
+        </div>
+      </div>
+    </section>
+
+    <section class="section stories" id="verhalen">
+      <div class="stories-header reveal">
+        <div>
+          <p class="eyebrow">NatasSpeaks</p>
+
+          <h2>
+            Verhalen<br>
+            <em>die blijven.</em>
+          </h2>
+        </div>
+
+        <p>
+          Een plek voor woorden over ondernemen,
+          leven, groei en vrijheid.
+        </p>
+      </div>
+
+      <div class="story-grid">
+
+        <a href="natasspeaks.html" class="story-card reveal">
+          <span class="story-tag">Groei</span>
+          <h3>De moed om opnieuw te beginnen</h3>
+          <p>
+            Over loslaten wat vertrouwd is en ruimte maken
+            voor wat nog geen naam heeft.
+          </p>
+        </a>
+
+        <a href="natasspeaks.html" class="story-card reveal">
+          <span class="story-tag">Leven</span>
+          <h3>Wat stilte mij leerde</h3>
+          <p>
+            Een brief aan de versie van mij die dacht
+            dat rust tijdverspilling was.
+          </p>
+        </a>
+
+        <a href="natasspeaks.html" class="story-card reveal">
+          <span class="story-tag">Ondernemen</span>
+          <h3>Je merk mag menselijk zijn</h3>
+          <p>
+            Waarom vertrouwen vaak begint wanneer je
+            ophoudt perfect te willen lijken.
+          </p>
+        </a>
+
+      </div>
+    </section>
+
+    <section class="section contact" id="contact">
+      <p class="eyebrow">Jouw volgende hoofdstuk</p>
+
+      <h2>
+        Laten we iets<br>
+        <em>moois maken.</em>
+      </h2>
+
+      <p>
+        Heb je een idee, een verhaal of een merk dat meer ruimte nodig heeft?
+        Ik denk graag met je mee.
+      </p>
+
+      <a class="contact-mail" href="mailto:Bynatasja.business@hotmail.com">
+        Bynatasja.business@hotmail.com 
+        <span>↗</span>
+      </a>
+    </section>
+
+  </main>
+
+  <footer>
+    <a href="#home" class="logo">
+      <span>BY</span>NATASJA
+    </a>
+
+    <p>
+      © 2026 ByNatasja — Eén verhaal, meerdere werelden
+    </p>
+
+    <div>
+      <a href="#werelden">Werelden</a>
+      <a href="#verhalen">Verhalen</a>
+    </div>
+  </footer>
+
+  <script>
+    const header = document.getElementById("header");
+    const progress = document.getElementById("progress");
+    const menuToggle = document.getElementById("menuToggle");
+    const navigation = document.getElementById("navigation");
+
+    function updatePage() {
+      const totalHeight =
+        document.documentElement.scrollHeight - window.innerHeight;
+
+      const percentage = (window.scrollY / totalHeight) * 100;
+
+      progress.style.width = `${percentage}%`;
+      header.classList.toggle("scrolled", window.scrollY > 40);
+    }
+
+    window.addEventListener("scroll", updatePage, {
+      passive: true
+    });
+
+    updatePage();
+
+    menuToggle.addEventListener("click", () => {
+      const isOpen = navigation.classList.toggle("open");
+
+      menuToggle.setAttribute("aria-expanded", isOpen);
+      menuToggle.setAttribute(
+        "aria-label",
+        isOpen ? "Menu sluiten" : "Menu openen"
+      );
+    });
+
+    navigation.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        navigation.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+      });
+    });
+
+    const revealElements = document.querySelectorAll(".reveal");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      },
+      {
+        threshold: 0.14
+      }
+    );
+
+    revealElements.forEach((element) => {
+      observer.observe(element);
+    });
+  </script>
+
+</body>
+</html>

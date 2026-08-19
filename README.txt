@@ -1,0 +1,1 @@
+Plaats natasspeaks.html naast file.jpg en 2.jpg. Open natasspeaks.html in Live Server. Vervang de voorbeeldverhalen en pas de links/e-mail aan.

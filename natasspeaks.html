@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="NatasSpeaks — verhalen over ondernemen, leven, groei en vrijheid.">
+<title>NatasSpeaks — Verhalen die blijven</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400&family=DM+Sans:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+:root{--night:#071010;
+--deep:#0e1d1b;
+--forest:#20382f;
+--mist:#9eafac;
+--cream:#eee9dd;
+--gold:#c1a061;
+--line:rgba(238,233,221,.16);
+--serif:'Playfair Display',Georgia,serif;--sans:'DM Sans',sans-serif;--mono:'DM Mono',monospace}*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--night);color:var(--cream);font-family:var(--sans);overflow-x:hidden}
+.grain{position:fixed;inset:0;z-index:30;pointer-events:none;opacity:.055;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='a'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23a)'/%3E%3C/svg%3E")}
+.stars{position:fixed;inset:0;pointer-events:none;overflow:hidden;opacity:.7}
+.star{position:absolute;width:2px;height:2px;background:var(--gold);border-radius:50%;animation:twinkle 4s infinite ease-in-out}@keyframes twinkle{0%,100%{opacity:.15;transform:scale(.8)}50%{opacity:1;transform:scale(1.5)}}
+a{color:inherit}
+.header{position:fixed;z-index:20;top:0;left:0;right:0;padding:25px 6vw;display:flex;justify-content:space-between;align-items:center;transition:.4s}
+.header.scrolled{background:rgba(7,16,16,.86);backdrop-filter:blur(16px);border-bottom:1px solid var(--line);padding:17px 6vw}
+.logo{font:16px var(--mono);letter-spacing:.1em;text-decoration:none}
+.logo b{color:var(--gold);font-weight:400}
+.nav{display:flex;gap:30px;align-items:center}
+.nav a{font:11px var(--mono);text-transform:uppercase;letter-spacing:.1em;text-decoration:none;color:var(--mist)}
+.nav a:hover{color:var(--cream)}
+.nav .back{border:1px solid var(--line);padding:11px 15px;color:var(--cream)}
+.toggle{display:none;background:none;border:0;color:var(--cream);font-size:24px}
+.hero{min-height:100vh;display:grid;place-items:center;position:relative;text-align:center;padding:140px 7vw 90px;background:radial-gradient(circle at 50% 42%,#29453c 0%,#102421 30%,var(--night) 68%);overflow:hidden}
+.halo{position:absolute;width:min(65vw,700px);height:min(65vw,700px);border:1px solid rgba(193,160,97,.2);border-radius:50%;box-shadow:0 0 100px rgba(193,160,97,.05),inset 0 0 100px rgba(193,160,97,.04);animation:breathe 8s infinite ease-in-out}@keyframes breathe{50%{transform:scale(1.06);opacity:.65}}
+.hero-inner{position:relative;z-index:2}
+.eyebrow{font:10px var(--mono);letter-spacing:.22em;text-transform:uppercase;color:var(--mist);margin-bottom:27px}
+.hero h1{font:400 clamp(60px,10vw,140px)/.9 var(--serif);letter-spacing:-.06em}
+.hero h1 em{display:block;color:var(--gold);font-style:italic}
+.hero p{max-width:450px;margin:34px auto 0;color:var(--mist);line-height:1.8;font-size:15px}
+.scroll-cue{display:flex;flex-direction:column;gap:13px;align-items:center;position:absolute;bottom:34px;left:50%;transform:translateX(-50%);font:10px var(--mono);letter-spacing:.16em;color:var(--mist)}
+.scroll-cue i{height:45px;width:1px;background:linear-gradient(var(--gold),transparent);animation:drop 1.8s infinite}@keyframes drop{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+.intro{padding:135px 10vw;background:var(--cream);color:var(--night);text-align:center}
+.intro h2,.library h2,.newsletter h2{font:400 clamp(43px,6vw,80px)/1 var(--serif);letter-spacing:-.05em}
+.intro h2 em,.library h2 em,.newsletter h2 em{color:var(--gold)}
+.intro p{font:400 21px/1.7 var(--serif);max-width:650px;margin:30px auto 0;color:#55635d}
+.library{padding:130px 9vw 150px;background:var(--deep)}
+.library-head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:60px}
+.library-head p{font:11px var(--mono);color:var(--mist);max-width:230px;line-height:1.7}
+.filters{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:44px}
+.filter{background:none;border:1px solid var(--line);color:var(--mist);padding:10px 15px;border-radius:100px;font:10px var(--mono);letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:.3s}
+.filter:hover,.filter.active{background:var(--gold);border-color:var(--gold);color:var(--night)}
+.stories{display:grid;grid-template-columns:repeat(12,1fr);gap:20px}
+.story{grid-column:span 4;min-height:430px;position:relative;display:flex;flex-direction:column;justify-content:end;padding:25px;background:var(--forest);overflow:hidden;text-decoration:none;border:1px solid transparent;transition:.5s;cursor:pointer}
+.story:nth-child(1){grid-column:span 7;min-height:520px}
+.story:nth-child(2){grid-column:span 5;min-height:520px}
+.story:nth-child(4){grid-column:span 5}
+.story:nth-child(5){grid-column:span 7}
+.story:before{content:'';position:absolute;inset:0;background:linear-gradient(transparent 20%,rgba(4,10,10,.9) 100%);z-index:1}
+.story img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.66;filter:saturate(.65);transition:.7s}
+.story:hover{border-color:rgba(193,160,97,.65);transform:translateY(-6px)}
+.story:hover img{transform:scale(1.08);opacity:.85}
+.story-content{position:relative;z-index:2}
+.story-tag{font:10px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:13px}
+.story h3{font:400 clamp(26px,3vw,40px)/1.05 var(--serif)}
+.story p{font-size:13px;line-height:1.6;color:#c0c9c4;max-width:390px;margin-top:14px}
+.story-meta{display:flex;justify-content:space-between;margin-top:22px;font:10px var(--mono);color:var(--mist);text-transform:uppercase;letter-spacing:.08em}
+.read-icon{font-size:19px;color:var(--gold)}
+.newsletter{padding:140px 8vw;text-align:center;background:var(--cream);color:var(--night)}
+.newsletter p{color:#5e6b66;margin:25px auto 35px;line-height:1.7}
+.signup{display:flex;max-width:490px;margin:auto;border-bottom:1px solid var(--night)}
+.signup input{flex:1;border:0;background:none;padding:15px 0;outline:0;font:14px var(--sans);color:var(--night)}
+.signup button{border:0;background:none;color:var(--gold);font:11px var(--mono);text-transform:uppercase;cursor:pointer}
+.success{display:none;color:var(--forest);font:12px var(--mono);padding:15px}
+.modal{position:fixed;inset:0;z-index:80;background:rgba(4,10,10,.9);backdrop-filter:blur(18px);display:none;align-items:center;justify-content:center;padding:30px}
+.modal.open{display:flex}
+.reader{width:min(800px,100%);max-height:90vh;overflow:auto;background:var(--cream);color:var(--night);padding:clamp(30px,7vw,80px);position:relative}
+.close{position:absolute;top:22px;right:25px;background:none;border:0;color:var(--night);font:25px var(--sans);cursor:pointer}
+.reader .story-tag{color:#8c7139}
+.reader h2{font:400 clamp(39px,6vw,70px)/1 var(--serif);letter-spacing:-.05em}
+.reader-info{font:10px var(--mono);color:#6b7770;margin:18px 0 40px;text-transform:uppercase;letter-spacing:.1em}
+.reader-body{font:400 19px/1.9 var(--serif);max-width:620px;color:#34423b}
+.reader-body p+p{margin-top:23px}footer{display:flex;justify-content:space-between;padding:27px 6vw;background:#050a0a;color:var(--mist);font:10px var(--mono)}
+footer a{text-decoration:none}
+footer div{display:flex;gap:20px}@media(max-width:760px){
+    .nav{position:fixed;inset:0;background:var(--night);display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:10vw;gap:28px;transform:translateX(100%);transition:.4s}
+    .nav.open{transform:translateX(0)}.nav a{font-size:16px}.toggle{display:block;z-index:25}
+    .header{padding:22px 7vw}.hero{padding-left:7vw;padding-right:7vw}
+    .intro,.library{padding-left:7vw;padding-right:7vw}
+    .library-head{display:block}
+    .library-head p{margin-top:25px}
+    .stories{display:block}
+    .story,.story:nth-child(n){min-height:420px;margin-bottom:16px}
+    .story:nth-child(1),.story:nth-child(2){min-height:480px}
+    .signup{display:block;border:0}
+    .signup input{border-bottom:1px solid var(--night);width:100%}
+    .signup button{padding:18px 0}footer{display:block;text-align:center}
+    footer p{margin:17px 0}
+    footer div{justify-content:center}}
+</style></head>
+<body>
+<div class="grain"></div><div class="stars" id="stars"></div>
+<header class="header" id="header"><a class="logo" href="index.html"><b>BY</b>NATASJA</a><button class="toggle" id="toggle">☰</button><nav class="nav" id="nav"><a href="index.html">Bynatasja</a><a href="#verhalen">Verhalen</a><a href="#contact">Contact</a><a class="back" href="index.html">Terug naar het huis ↗</a></nav></header>
+<main>
+<section class="hero"><div class="halo"></div><div class="hero-inner"><p class="eyebrow">NatasSpeaks / Echte verhalen </p><h1>Verhalen<br><em>die blijven.</em></h1><p>Pagina vol met waar gebeurt verhalen over pesten, ziek zijn , Dromen hebben en over leven.  </p></div><div class="scroll-cue">LEES MEE<i></i></div></section>
+<section class="intro" id="verhalen"><p class="eyebrow">Welkom in mijn wereld</p><h2>Ga zitten.<br><em>Ik vertel je iets.</em></h2><p>Sommige verhalen wil je niet snel lezen. Je wilt erin verdwijnen. Laat de wereld even stiller worden en ontdek woorden die misschien ook iets in jou aanraken.</p></section>
+<section class="library"><div class="library-head"><div><p class="eyebrow">The story library</p><h2>Alle <em>verhalen.</em></h2></div><p>Bewaar je favoriete verhaal, kom later terug en neem de tijd. Elk woord heeft zijn eigen ritme.</p></div><div class="filters"><button class="filter active" data-filter="all">Alles</button><button class="filter" data-filter="ondernemen">Ondernemen</button><button class="filter" data-filter="leven">Leven</button><button class="filter" data-filter="groei">Groei</button><button class="filter" data-filter="reizen">Reizen</button></div><div class="stories" id="stories">
+
+<article class="story" data-category="Leven" data-title="Dit ben ik en ik mag er wezen" data-date="31 Maart 2026" data-body="Mijn naam is Rudolf Rotman. Ik ben 30 jaar en geboren in Zutphen. Mijn leven is niet altijd makkelijk geweest. Ik kom uit een gezin waarin veel is gebeurd, dingen die je als kind eigenlijk niet zou moeten meemaken. Toch hebben juist die ervaringen mij gevormd tot wie ik vandaag ben.
+Want als je mij echt leert kennen, dan zie je niet alleen mijn verleden of mijn diagnoses. Dan zie je iemand die leeft vanuit liefde. Voor mensen. Voor dieren. Voor de natuur.
+Al toen ik een jaar of zes, zeven was, kreeg ik te horen dat ik PTSS heb posttraumatische stressstoornis en ADHD. Op die leeftijd begrijp je dat niet echt. Wat ik wél voelde, was dat ik anders was. Alsof ik er niet helemaal bij hoorde. Alsof ik mee moest draaien in een wereld die niet altijd bij mij paste. En toch wist ik: dit is mijn leven. Hier moet ik mee leren omgaan.
+Dat “leren omgaan” is nooit echt klaar. Het is iets wat elke dag terugkomt. Sommige dagen zijn goed. Dan voel ik me vrolijk, heb ik energie en kan ik genieten van kleine dingen. Maar er zijn ook dagen waarop alles zwaarder voelt. Dagen waarop mijn hoofd vol zit, mijn energie laag is en alles meer moeite kost.
+Wat veel mensen niet zien, is die strijd van binnen. Dat het niet “gewoon een slechte dag” is. Dat PTSS je kan raken op momenten dat je het zelf niet eens verwacht. En dat het dan kracht kost om daar weer doorheen te komen.
+Gelukkig heb ik iets wat mij rust geeft. Dieren. Zij oordelen niet. Ze voelen je aan zonder woorden. Mijn hond, en dieren in het algemeen, geven mij een soort rust die moeilijk uit te leggen is. Ze helpen mij om weer bij mezelf te komen, om te ademen, om even stil te staan.
+En naast die rust is er ook iets anders wat mij sterk houdt: verbinding. De mensen die mij écht zien. Vooral mijn beste vriendin, met wie ik ook aan deze website. Zij heeft mij geholpen om mezelf anders te leren zien. Om te accepteren wie ik ben. Ze staat naast me, geeft me advies, en laat me voelen dat ik er mag zijn precies zoals ik ben. Dat betekent meer dan woorden kunnen uitleggen.
+Toch zijn er ook momenten geweest waarop ik me heel alleen voelde. Onbegrepen. Dat mensen dachten dat het mijn eigen schuld was, of dat ze niet geloofden hoe zwaar het soms kan zijn. Dat zijn dingen die blijven hangen. Maar juist daardoor heb ik geleerd hoe belangrijk het is om jezelf niet te verliezen in wat anderen denken.
+Mijn leven is misschien anders dan dat van anderen. Ik moet elke dag zoeken naar balans. Elke dag is een uitdaging. Maar het heeft me ook iets gegeven: inzicht. Ik heb geleerd om naar mezelf te kijken, om mezelf te accepteren, en om stap voor stap van mezelf te houden.
+En daar ben ik trots op.
+Niet omdat het perfect gaat, maar juist omdat het niet perfect is en ik er toch sta.
+Als ik iets mag meegeven aan anderen die net horen dat ze PTSS hebben, dan is het dit: geef jezelf de tijd. En leer van jezelf te houden, ook op de dagen dat het moeilijk is.
+En aan de mensen die dit lezen wil ik zeggen: probeer te begrijpen. Mensen met PTSS zijn niet “zwak” of “anders” op een slechte manier. We zijn mensen met een verhaal. Mensen die ook willen leven, voelen, en erbij willen horen.
+Wat ik hoop? Dat mensen mijn verhaal lezen en denken: ja… respect. Niet alleen voor mij, maar voor iedereen die elke dag vecht op een manier die je niet altijd ziet.
+
+
+
+Want uiteindelijk geloof ik in iets simpels, maar krachtigs:
+dat we elkaar moeten accepteren.
+dat we elkaar moeten respecteren.
+en dat liefde – voor mensen, voor dieren, voor het leven – altijd de basis moet zijn.
+
+
+
+Van wegen privé wetgeving heb ik akkoord om dit vertellen op bynatasja .
+
+."><img src="forest-rays-3840-2160-v0-4vztk5m7p9651.jpg.webp" alt="Licht door een opening in de rots"><div class="story-content"><div class="story-tag">Groei · 6 min lezen</div><h3>Ik mag er wezen </h3><p>Over loslaten wat vertrouwd is en ruimte maken voor wat nog geen naam heeft.</p><div class="story-meta"><span>12.06.2026</span><span class="read-icon">↗</span></div></div></article>
+
+<article class="story" data-category="leven" data-title="Wat stilte mij leerde" data-date="28 mei 2026" data-body="Ik was een klein meisje van ongeveer zes jaar oud toen het begon.
+Op de basisschool was ik dat stille meisje. Verlegen, teruggetrokken en iemand die weinig zei. Ik probeerde zo min mogelijk op te vallen, maar toch was ik degene die steeds opnieuw werd gepest.
+
+Het pesten kwam van een groep meiden en jongens. Er waren andere kinderen die net zo stil waren als ik, maar zij werden niet gepest. Ik wel. Steeds weer.
+Ik werd uitgescholden om mijn uiterlijk, omdat ik dik was. De scheldwoorden kwamen van alle kanten en raakten me diep.
+
+Daarnaast stotterde ik vroeger veel. Ook dat werd een reden om mij belachelijk te maken. Meiden en jongens lachten me uit wanneer ik probeerde te praten.
+Wanneer ik een boek moest voorlezen in de klas, kwam ik nooit ver. De woorden bleven steken. Mijn hoofd ging steeds naar beneden, omdat ik er niet uitkwam. De schaamte en spanning namen het over.
+
+Ook tijdens het buitenspelen hield het pesten niet op. Er was geen veilige plek, geen moment van rust.
+Jaar na jaar ging het door, tot en met groep 8. Het pesten werd steeds erger.
+
+Door alles wat er gebeurde ging ik steeds vaker huilend naar huis. Soms liep ik zelfs huilend weg van school. Ik was vaak ziek thuis, niet omdat ik lichamelijk ziek was, maar omdat het mentaal te zwaar werd.
+School voelde niet langer als een veilige plek, maar als iets wat ik moest overleven.
+
+Dit is wat pesten met mij heeft gedaan.
+Het heeft sporen achtergelaten die niet altijd zichtbaar zijn, maar die ik elke dag met me meedraag.
+
+Door mijn verhaal te delen hoop ik bij te dragen aan meer begrip, bewustwording en zachtheid voor kinderen die vandaag de dag hetzelfde meemaken."><img src="01foto-1.jpg" alt="Mijn verhaal"><div class="story-content"><div class="story-tag">Leven · 4 min lezen</div><h3>Mijn verhaal </h3><p>Het verhaal van een meisje die aan het storten is en werd gepest. </p><div class="story-meta"><span>18.08.2026</span><span class="read-icon">↗</span></div></div></article>
+
+<article class="story" data-category="ondernemen" data-title="Je merk mag menselijk zijn" data-date="04 mei 2026" data-body="Pesten kan je langzaam van binnen breken. In het begin lijken het misschien “maar woorden”, maar woorden kunnen diep snijden. Als je dag na dag wordt gepest, ga je op een gegeven moment geloven wat er over je wordt gezegd. Je zelfvertrouwen zakt steeds verder naar beneden. Je voelt je minder waard. Alsof jij het probleem bent.
+
+Het kan zo erg worden dat je niet meer naar school wilt. Je blijft liever thuis, omdat dat de enige plek is waar je je even veilig voelt. Toch zit het ook daar in je hoofd. De stemmen, de opmerkingen, het uitlachen. Je denkt: “Misschien hebben ze gelijk.” Of: “Ik ben niet goed genoeg.” Soms wil je gewoon niks meer. Geen school, geen mensen, geen aandacht. Alleen rust.
+
+Pesten doet niet alleen pijn op het moment zelf. Het kan jaren blijven hangen. Het zorgt voor onzekerheid, angst en sombere gedachten. Je kunt je eenzaam voelen, zelfs als er mensen om je heen zijn. Je trekt je terug, omdat het veiliger voelt dan opnieuw gekwetst worden.
+
+Maar pesten zegt vaak meer over de pester dan over jou. Mensen die pesten zijn zelf vaak onzeker, willen aandacht of macht voelen, of durven niet voor zichzelf op te komen. Dat maakt hun gedrag niet goed, maar het laat wel zien dat jij niet het probleem bent. Niemand verdient het om naar beneden gehaald te worden.
+
+Hoe diep het ook heeft gezeten, je kunt hieruit groeien. Het kost tijd. Het kost moed. Maar je bent sterker dan je misschien denkt.
+
+Tips: Wat kun je doen als je gepest wordt?
+
+<h3>1. Praat erover</h3>
+Blijf er niet alleen mee rondlopen. Praat met een ouder, docent, mentor of iemand die je vertrouwt. Door het uit te spreken wordt het minder zwaar.
+
+<h3>2. Onthoud: woorden zijn geen waarheid</h3>
+Wat anderen zeggen, bepaalt niet wie jij bent. Schrijf voor jezelf op wat jouw goede eigenschappen zijn.
+
+<h3>3. Zoek iets waar jij je goed bij voelt</h3>
+Een hobby, sport, muziek of iets creatiefs kan helpen om weer zelfvertrouwen op te bouwen.
+
+<h3>4. Trek grenzen als dat veilig can</h3>
+Soms helpt het om duidelijk te zeggen: “Stop. Dit is niet oké.” Doe dit alleen als je je veilig voelt.
+
+<h3>5. Zoek hulp als je gedachten donker worden</h3>
+Als je merkt dat je denkt dat je niet meer wilt of dat alles zinloos voelt, zoek hulp. In Nederland kun je contact opnemen met 113 Zelfmoordpreventie via 113 of 0800-0113. Je hoeft het niet alleen te dragen.
+
+<h3>6. Weet dat het beter kan worden</h3>
+Hoe uitzichtloos het soms voelt: deze periode bepaalt niet je hele leven. Je bent meer dan wat anderen over je zeggen."><img src="DSC_1071.JPG" alt="Pesten "><div class="story-content"><div class="story-tag">Ondernemen · 5 min lezen</div><h3>Wat is pesten?</h3><p>Waarom pesten zo veel mensen elkaar waarom lees het verhaal. </p><div class="story-meta"><span>04.05.2026</span><span class="read-icon">↗</span></div></div></article>
+
+<article class="story" data-category="reizen" data-title="De weg weet meer dan ik" data-date="19 april 2026" data-body="Reizen met astma hoeft geen belemmering te zijn. Sterker nog: soms ben je zó aan het genieten, zó in het moment, dat je bijna vergeet dat je astma hebt. Je zit in een flow. Je bent omringd door nieuwe plekken, activiteiten en mensen die in korte tijd vrienden worden. Samen lachen, samen ontdekken, samen herinneringen maken. Dat gevoel is onbetaalbaar.
+
+Tijdens het reizen doe je vaak veel activiteiten. Wandelen, fietsen, klimmen, zwemmen, nieuwe steden ontdekken. Je dagen zitten vol en je hoofd zit nog voller met indrukken. Juist dan merk je: astma is er, maar het staat niet altijd op de voorgrond. En dat is oké.
+
+Dat betekent niet dat je het moet negeren. Reizen met astma vraagt vooral om bewust zijn, niet om angst. Je leert luisteren naar je lichaam. Op tijd rust nemen. Je inhalator bij je dragen. Even stoppen als je adem dat vraagt. Niet omdat je moet, maar omdat je goed voor jezelf zorgt.
+
+Astma hebben tijdens het reizen is lang niet altijd erg. Vaak is het geen probleem. Zeker niet als je je grenzen kent en daar respect voor hebt. Soms merk je er nauwelijks iets van, omdat plezier, verbinding en avontuur overheersen. En soms is het er wel even – en dan ga je daarna gewoon weer door.
+
+Wat reizen met astma je vooral leert, is vertrouwen. Vertrouwen in je lichaam. Vertrouwen in jezelf. En vertrouwen dat je meer aankunt dan je denkt. Je hoeft jezelf niet tegen te houden om alles onder controle te houden. Je mag leven, lachen, bewegen en genieten.
+
+Dus ga. Reis. Doe mee. Maak vrienden. Beleef het moment.
+Astma reist misschien met je mee, maar het hoeft nooit de leiding te nemen.
+
+Jij bepaalt het tempo. Jij bepaalt de ervaring. En vooral: jij bepaalt hoe groot je wereld mag zijn."><img src="A87CD7A6-B7DE-4976-AB48-CEFF0B883ED8.jpg" alt="Reizen met asma "><div class="story-content"><div class="story-tag">Reizen · 7 min lezen</div><h3>Reizen met asama</h3><p>Hoe help je iemand die graag wil reizen rond de wereld maar asma heeft wat moet je doen. </p><div class="story-meta"><span>19.04.2026</span><span class="read-icon">↗</span></div></div></article>
+
+<article class="story" data-category="ondernemen" data-title="Niet iedereen hoeft je te begrijpen" data-date="02 april 2026" data-body="Iedere alle mensen hebben dromen en visies. die vaak waar wilen maken zo als ze soms zeggen 'dromen zijn bedroeg ' Niet iedereen heeft een droom of andere visie. maar veel mensen hebben dat namlijk en die mensen weten wat er namlijk gaat komen en die weten dat ze hard moeten werken voor het geld  "><img src="IMG_3079.jpeg" alt="Donker landschap aan zee"><div class="story-content"><div class="story-tag">Ondernemen · 3 min lezen</div><h3>Niet iedereen hoeft je te begrijpen</h3><p>Een zachte herinnering voor iedereen die zijn eigen weg probeert te bouwen.</p><div class="story-meta"><span>02.04.2026</span><span class="read-icon">↗</span></div></div></article>
+</div></section>
+<section class="newsletter" id="contact">
+  <p class="eyebrow">Deel jouw verhaal</p>
+
+  <h2>
+    Mail mij jouw<br>
+    <em>verhaal.</em>
+  </h2>
+
+  <p>
+    Heb jij een verhaal dat anderen kan raken?
+    Ik lees het graag.
+  </p>
+
+  <a
+    class="mail-button"
+    href="mailto:natasspeaks@hotmail.com ?subject=Mijn verhaal voor NatasSpeaks&body=Hallo Natasja,%0D%0A%0D%0ATitel van mijn verhaal:%0D%0A%0D%0AMijn verhaal:%0D%0A%0D%0AMet vriendelijke groet,"
+  >
+    Mail mij jouw verhaal
+    <span>↗</span>
+  </a>
+</section>
+<div class="modal" id="modal"><article class="reader"><button class="close" id="close">×</button><div class="story-tag" id="readerTag"></div><h2 id="readerTitle"></h2><div class="reader-info" id="readerDate"></div><div class="reader-body" id="readerBody"></div></article></div>
+<footer><a class="logo" href="index.html"><b>BY</b>NATASJA</a><p>© 2026 NatasSpeaks · verhalen met aandacht</p><div><a href="#">Instagram</a><a href="#">Mail</a></div></footer>
+<script>
+const header=document.getElementById('header'),toggle=document.getElementById('toggle'),nav=document.getElementById('nav');addEventListener('scroll',()=>header.classList.toggle('scrolled',scrollY>30),{passive:true});toggle.onclick=()=>nav.classList.toggle('open');nav.querySelectorAll('a').forEach(a=>a.onclick=()=>nav.classList.remove('open'));
+const stars=document.getElementById('stars');for(let i=0;i<55;i++){const s=document.createElement('i');s.className='star';s.style.left=Math.random()*100+'%';s.style.top=Math.random()*100+'%';s.style.animationDelay=Math.random()*4+'s';s.style.opacity=Math.random();stars.appendChild(s)}
+const filters=document.querySelectorAll('.filter'),cards=document.querySelectorAll('.story');filters.forEach(btn=>btn.onclick=()=>{filters.forEach(x=>x.classList.remove('active'));btn.classList.add('active');const f=btn.dataset.filter;cards.forEach(c=>c.style.display=f==='all'||c.dataset.category===f?'flex':'none')});
+const modal=document.getElementById('modal'),close=document.getElementById('close');cards.forEach(card=>card.onclick=()=>{document.getElementById('readerTag').textContent=card.querySelector('.story-tag').textContent;document.getElementById('readerTitle').textContent=card.dataset.title;document.getElementById('readerDate').textContent=card.dataset.date+' · NatasSpeaks';document.getElementById('readerBody').innerHTML=card.dataset.body.split('\\n\\n').map(p=>'<p>'+p+'</p>').join('');modal.classList.add('open');document.body.style.overflow='hidden'});function shut(){modal.classList.remove('open');document.body.style.overflow=''}close.onclick=shut;modal.onclick=e=>{if(e.target===modal)shut()};addEventListener('keydown',e=>{if(e.key==='Escape')shut()});
+const signup=document.getElementById('signup');
+if(signup)signup.onsubmit=e=>{e.preventDefault();signup.style.display='none';const success=document.getElementById('success');if(success)success.style.display='block'};
+</script>
+   
+</body>
+</html>
