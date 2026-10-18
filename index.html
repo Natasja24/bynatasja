@@ -1,133 +1,235 @@
 <!doctype html>
 <html lang="nl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Bynatasja — een digitaal ecosysteem voor verhalen, strategie, creativiteit en reizen.">
-  <title>Bynatasja — Eén wereld. Vier verhalen.</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400&family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-<!-- Google tag (gtag.js) -->
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="ByNatasja — websites, digitale ondersteuning, fotografie en creatieve content. Met aandacht gemaakt, vanuit Lochem, beschikbaar wereldwijd." />
+<title>ByNatasja — Ruimte voor jouw verhaal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-VY6K7PSLYJ"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-VY6K7PSLYJ');
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-VY6K7PSLYJ');
 </script>
+<style>
+:root{
+--background:#f7f4ec;--foreground:#2f2b26;--card:#fffdf8;--primary:#5c6b4f;
+--primary-foreground:#f7f4ec;--secondary:#e8e4d8;--muted-foreground:#6b655c;
+--accent:#bf8f6f;--accent-foreground:#2f2b26;--border:#ddd8cb;
+--font-body:"Spectral",Georgia,"Times New Roman",serif;
+--font-ui:"Inter",ui-sans-serif,system-ui,-apple-system,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--background);color:var(--foreground);font-family:var(--font-body);-webkit-font-smoothing:antialiased;line-height:1.5}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--accent);color:#000}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+.eyebrow{font-family:var(--font-ui);font-size:.75rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-foreground)}
+.display{letter-spacing:-.02em;line-height:1.05;font-weight:400}
+h1.display{font-size:clamp(2.6rem,7vw,4.5rem)}
+h2.display{font-size:clamp(2rem,5vw,3rem)}
+.btn{display:inline-block;font-family:var(--font-ui);font-size:.8rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;padding:14px 24px;background:var(--primary);color:var(--primary-foreground);transition:background .2s,color .2s}
+.btn:hover{background:var(--accent);color:var(--accent-foreground)}
+.link-underline{font-family:var(--font-ui);font-size:.8rem;font-weight:500;text-transform:uppercase;letter-spacing:.1em;border-bottom:1px solid rgba(47,43,38,.3);padding-bottom:4px;transition:border-color .2s}
+.link-underline:hover{border-color:var(--foreground)}
+header{position:sticky;top:0;z-index:40;border-bottom:1px solid var(--border);background:rgba(247,244,236,.92);backdrop-filter:blur(8px)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;max-width:1200px;margin:0 auto}
+.wordmark{font-family:var(--font-body);font-size:1.25rem;letter-spacing:-.02em}
+.wordmark .by{font-weight:400}
+.wordmark .nat{font-weight:700}
+nav.main{display:flex;align-items:center;gap:32px}
+nav.main a.navlink{font-family:var(--font-ui);font-size:.8rem;font-weight:500;text-transform:uppercase;letter-spacing:.12em;color:rgba(47,43,38,.7);transition:color .2s}
+nav.main a.navlink:hover{color:var(--foreground)}
+.menu-btn{display:none;flex-direction:column;gap:6px;background:none;border:0;cursor:pointer;padding:6px}
+.menu-btn span{display:block;width:24px;height:1px;background:var(--foreground)}
+section{border-bottom:1px solid var(--border)}
+section[id]{scroll-margin-top:5rem}
+.hero-grid{display:grid;gap:48px;align-items:center;padding:64px 0}
+.hero-grid .copy p.sub{margin-top:24px;font-size:1.125rem;line-height:1.7;color:rgba(47,43,38,.8);max-width:36rem}
+.hero-grid .copy p.intro{margin-top:16px;font-size:1rem;line-height:1.7;color:var(--muted-foreground);max-width:36rem}
+.hero-cta{margin-top:32px;display:flex;flex-wrap:wrap;gap:16px;align-items:center}
+.hero-visual{position:relative}
+.hero-visual img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:8px}
+.badge{position:absolute;bottom:-12px;left:16px;background:var(--accent);color:var(--accent-foreground);font-family:var(--font-ui);font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.14em;padding:6px 12px}
+.sec-head{max-width:42rem}
+.sec-head p.lead{margin-top:16px;font-size:1.125rem;line-height:1.7;color:var(--muted-foreground)}
+.pad{padding:64px 0}
+.grid-services{margin-top:48px;display:grid;gap:1px;background:var(--border);border:1px solid var(--border)}
+.card{background:var(--card);padding:28px;display:flex;flex-direction:column;height:100%}
+.card .num{font-family:var(--font-ui);font-size:.75rem;font-weight:600;letter-spacing:.14em;color:var(--muted-foreground)}
+.card h3{margin-top:16px;font-family:var(--font-body);font-size:1.5rem;font-weight:500;letter-spacing:-.02em}
+.card p{margin-top:12px;font-size:1rem;line-height:1.7;color:var(--muted-foreground)}
+.two-col{display:grid;gap:48px;align-items:center;padding:64px 0}
+.two-col img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:8px}
+.two-col.land img{aspect-ratio:4/3}
+.two-col .body p{margin-top:24px;font-size:1.125rem;line-height:1.7;color:rgba(47,43,38,.8);max-width:36rem}
+.meta{margin-top:32px;font-family:var(--font-ui);font-size:.85rem;text-transform:uppercase;letter-spacing:.14em;color:var(--muted-foreground)}
+.process{background:rgba(232,228,216,.4)}
+.steps{margin-top:48px;display:grid;gap:40px}
+.step{border-top:2px solid var(--foreground);padding-top:24px}
+.step .num{font-family:var(--font-ui);font-size:.875rem;font-weight:600;letter-spacing:.14em;color:var(--muted-foreground)}
+.step h3{margin-top:12px;font-family:var(--font-body);font-size:1.5rem;font-weight:500;letter-spacing:-.02em}
+.step p{margin-top:12px;font-size:1rem;line-height:1.7;color:var(--muted-foreground)}
+.contact{background:var(--primary);color:var(--primary-foreground)}
+.contact .eyebrow{color:rgba(247,244,236,.9)}
+.contact .body p{margin-top:24px;font-size:1.125rem;line-height:1.7;color:rgba(247,244,236,.9);max-width:36rem}
+.contact .mail{display:inline-block;margin-top:32px;background:var(--accent);color:var(--accent-foreground);font-family:var(--font-ui);font-size:.8rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;padding:14px 24px;transition:opacity .2s}
+.contact .mail:hover{opacity:.9}
+.contact .meta{color:rgba(247,244,236,.9)}
+footer{border-top:1px solid var(--border)}
+.foot-inner{display:flex;flex-direction:column;gap:24px;padding:48px 24px;max-width:1200px;margin:0 auto}
+.foot-inner .copy{font-family:var(--font-ui);font-size:.75rem;text-transform:uppercase;letter-spacing:.12em;color:var(--muted-foreground)}
+.foot-links{display:flex;gap:24px}
+.foot-links a{font-family:var(--font-ui);font-size:.75rem;text-transform:uppercase;letter-spacing:.12em;color:rgba(47,43,38,.7);transition:color .2s}
+.foot-links a:hover{color:var(--foreground)}
+@media(min-width:768px){
+.hero-grid{grid-template-columns:1fr 1fr;padding:96px 0}
+.two-col{grid-template-columns:2fr 3fr;padding:96px 0}
+.two-col.land{grid-template-columns:1fr 1fr}
+.pad{padding:96px 0}
+.grid-services{grid-template-columns:repeat(3,1fr)}
+.steps{grid-template-columns:repeat(3,1fr)}
+.foot-inner{flex-direction:row;align-items:center;justify-content:space-between}
+}
+@media(max-width:767px){
+nav.main{display:none}
+nav.main.open{display:flex;flex-direction:column;align-items:stretch;gap:0;position:absolute;top:100%;left:0;right:0;background:var(--background);border-top:1px solid var(--border);padding:8px 24px 16px}
+nav.main.open a.navlink{border-bottom:1px solid var(--border);padding:12px 0}
+nav.main.open .btn{margin-top:16px;text-align:center}
+.menu-btn{display:flex}
+}
+</style>
 </head>
 <body>
-  <div class="noise"></div>
-  <div class="progress" id="progress"></div>
+<header>
+<div class="nav-inner">
+<a href="#top" class="wordmark" aria-label="ByNatasja — naar boven"><span class="by">BY</span><span class="nat">NATASJA</span></a>
+<nav class="main" id="nav">
+<a class="navlink" href="#diensten">Diensten</a>
+<a class="navlink" href="Aboutmy.HTML">Over mij</a>
+<a class="navlink" href="nova copy.html">Werk</a>
+<a class="navlink" href="natasspeaks.html">NatasSpeaks</a>
+<a class="navlink" href="https://natasja24.github.io/Natasjachutportofolio/" target="_blank" rel="noreferrer">Portfolio</a>
+<a class="navlink" href="contact.html">Contact</a>
 
-  <header class="header" id="header">
-    <a class="logo" href="#top" aria-label="Bynatasja home"><span>BY</span>NATASJA</a>
-    <button class="menu-toggle" id="menuToggle" aria-label="Menu openen" aria-expanded="false"><i></i><i></i></button>
-    <nav class="nav" id="nav">
-      <a href="#werelden">Werelden</a>
-      <a href="Aboutmy.HTML">Mijn verhaal</a>
-      <a href="#contact">Contact</a>
-      <a href="https://natasja24.github.io/Natasjachutportofolio/">Portofolio</a>
-      <a class="nav-cta" href="#contact">Start een gesprek <span>↗</span></a>
-    </nav>
-  </header>
-
-  <main id="top">
-    <section class="hero">
-      <div class="hero-copy">
-        <p class="eyebrow">Bynatasja </p>
-        <h1>Ruimte voor<br><em>jouw verhaal.</em></h1>
-        <p class="intro">Waar staat ByNatasja voor?
-          ByNatasja is voor mij meer dan alleen een bedrijf.
-          Het is een plek waar ik mijn creativiteit, ideeën en verhalen kan samenbrengen en waar ik anderen kan helpen.
-          Ik krijg energie van het bedenken, maken en organiseren van dingen. 
-          <br>
-          Of het nu gaat om een website, ondersteuning bij een project, fotografie of het uitwerken van een idee: 
-          ik vind het leuk om samen te kijken wat er nodig is en hoe we iets kunnen maken waar iemand echt blij mee is.
-          <br>
-          ByNatasja groeit stap voor stap. Ik ben mijn bedrijf aan het opbouwen vanuit de dingen die ik leuk vind, waar ik goed in ben en waarin ik mij verder wil ontwikkelen.
-          Mijn doel is om met mijn kennis, creativiteit en persoonlijke aanpak iets voor anderen te kunnen betekenen.
-          ByNatasja is mijn verhaal, mijn creativiteit en mijn manier om anderen te helpen.</p>
-        <a class="circle-link" href="#werelden"><span>Ontdek<br>de werelden</span><b>↓</b></a>
-      </div>
-      <div class="hero-visual">
-        <div class="hero-image"><img src="natasja-portrait.jpeg" alt="Misty kust met aangespoeld hout"></div>
-        <div class="hero-stamp">STORIES<br><span>WITH</span><br>SOUL</div>
-        <p class="image-caption">01 — Where the wild meets the intentional</p>
-      </div>
-      <div class="hero-side"> Lochem  <span>•</span> WORLDWIDE</div>
-    </section>
-
-    <section class="manifesto" id="verhaal">
-      <p class="eyebrow">Een huis met meerdere deuren</p>
-      <div class="manifesto-grid">
-        <h2>Niet harder.<br><em>Wel echter.</em></h2>
-        <div><p class="large-text">Ik geloof dat een merk pas blijft hangen wanneer het ergens voor staat. Daarom combineer ik helderheid met gevoel, ambitie met rust en strategie met een verhaal dat écht van jou is.</p><a class="text-link" href="#contact">Lees mijn verhaal <span>↗</span></a></div>
-      </div>
-    </section>
-
-    <section class="worlds" id="werelden">
-      <div class="section-head"><div><p class="eyebrow">The house of Bynatasja</p><h2>Vier werelden.<br><em>Eén hart.</em></h2></div><p class="section-note">Kies de deur die vandaag bij je past.</p></div>
-      <div class="world-list">
-        <a class="world world-one" href="#contact"><div class="world-number">01</div><div class="world-name"><span>Bynatasja</span><small>Personal brand · Direction</small></div><div class="world-desc">Jouw verhaal als fundament voor een merk dat gezien mag worden.</div><div class="world-arrow">↗</div></a>
-        <a class="world world-two" href="nova copy.html"><div class="world-number">02</div><div class="world-name"><span>Bynatasja<span class="accent">Nova</span></span><small>Webdesign · Digital support</small></div><div class="world-desc">Digitale ruimtes die rustig voelen, helder werken en blijven groeien.</div><div class="world-arrow">↗</div></a>
-        <a class="world world-three" href="natasspeaks.html"><div class="world-number">03</div><div class="world-name"><span>Natas<span class="gold">Speaks</span></span><small>Words · Stories · Reflections</small></div><div class="world-desc">Gedachten over ondernemen, leven en de moed om onderweg te veranderen.</div><div class="world-arrow">↗</div></a>
-        <a class="world world-four" href="#contact"><div class="world-number">04</div><div class="world-name"><span>Travel<span class="accent">ByNatasja</span></span><small>Slow travel · Experiences</small></div><div class="world-desc">Reizen met aandacht. Plaatsen en momenten die je blik verruimen.</div><div class="world-arrow">↗</div></a>
-      </div>
-    </section>
-
-    <section class="feature">
-      <div class="feature-image"><img src="forest-rays-3840-2160-v0-4vztk5m7p9651.jpg.webp" alt="Donkere kustlijn met opening naar de zee"><div class="feature-word">FREEDOM</div></div>
-      <div class="feature-copy"><p class="eyebrow"> Bynatasja </p>
-        <h2>Je hoeft niet<br>in één hokje<br>
-          <em>te passen.</em>
-        </h2>
-        <p>Jouw werk mag meerdere kanten hebben. Jouw merk mag ademen. Ik help je om de rode draad zichtbaar te maken — zodat alles wat je doet als één geheel voelt.</p>
-        <a class="button" href="#contact">Ontmoet Bynatasja <span>↗</span>
-        </a>
-      </div>
-    </section>
-
-    <section class="process">
-      <p class="eyebrow">Van idee naar aanwezigheid</p>
-      <h2>Met aandacht<br>
-        <em>gemaakt.</em>
-      </h2>
-      <div class="steps">
-        <div>
-        <span>01</span>
-        <h3>Luisteren</h3>
-        <p>We zoeken naar wat er onder de vraag ligt.</p>
-      </div>
-      <div>
-        <span>02</span>
-        <h3>Vormen</h3>
-        <p>We vertalen jouw essentie naar richting en design.</p>
-      </div>
-      <div>
-        <span>03</span>
-        <h3>Bewegen</h3>
-        <p>Je gaat naar buiten met een merk dat klopt.</p>
-      </div>
-    </section>
-
-    <section class="contact" id="contact">
-      <div class="contact-inner">
-        <p class="eyebrow">Klaar om te beginnen?</p>
-        <h2>Vertel me waar<br>
-          <em>jij van droomt.</em>
-        </h2>
-        <a class="contact-mail" href="mailto:Bynatasja.business@hotmail.com "> <span>↗</span>
-        </a>
-        <p class="contact-meta">Bynatasja · Lochem · beschikbaar wereldwijd</p>
-      </div>
-    </section>
-  </main>
-
-  <footer><a class="logo" href="#top"><span>BY</span>NATASJA</a><p>© 2026 Bynatasja. Gemaakt met aandacht.</p><div><a href="#">Instagram</a><a href="#">LinkedIn</a></div></footer>
-  <script src="script.js"></script>
+<a class="btn" href="#contact">Start een gesprek</a>
+</nav>
+<button class="menu-btn" id="menuBtn" aria-label="Menu openen" aria-expanded="false"><span></span><span></span></button>
+</div>
+</header>
+<main>
+<section id="top">
+<div class="wrap hero-grid">
+<div class="copy">
+<p class="eyebrow">Creatief ondernemen · Lochem</p>
+<h1 class="display">Ruimte voor jouw verhaal.</h1>
+<p class="sub">Websites, digitale ondersteuning en creatieve content — met aandacht gemaakt.</p>
+<p class="intro">ByNatasja is het bedrijf van Natasja. Ik help mensen en merken met een website, digitale ondersteuning, fotografie of het uitwerken van een idee. Samen kijken we wat er nodig is en maken we iets waar je echt blij mee bent.</p>
+<div class="hero-cta">
+<a class="btn" href="#contact">Start een gesprek</a>
+<a class="link-underline" href="#diensten">Bekijk diensten</a>
+</div>
+</div>
+<div class="hero-visual">
+<img src="Natasja-14 Normaal.jpeg" alt="Natasja Schut, creatief ondernemer" />
+<span class="badge">Lochem · Wereldwijd</span>
+</div>
+</div>
+</section>
+<section id="diensten">
+<div class="wrap pad">
+<div class="sec-head">
+<p class="eyebrow">Diensten</p>
+<h2 class="display">Waar ik je mee help.</h2>
+<p class="lead">Van een website tot fotografie of het uitwerken van een idee. Kies wat past — of we kijken samen wat nodig is.</p>
+</div>
+<div class="grid-services">
+<article class="card"><span class="num">01</span><h3>Webdesign &amp; websites</h3><p>Digitale ruimtes die rustig voelen en helder werken. Van eerste schets tot een site die je zelf kunt bijhouden.</p></article>
+<article class="card"><span class="num">02</span><h3>Digitale ondersteuning</h3><p>Hulp bij je online aanwezigheid: structuur, teksten, tools en het overzicht bewaren.</p></article>
+<article class="card"><span class="num">03</span><h3>Fotografie</h3><p>Beeld dat klopt bij wie je bent — portretten, sfeer en verhalende fotografie.</p></article>
+<article class="card"><span class="num">04</span><h3>Verhalen &amp; content</h3><p>Tekst en storytelling die jouw stem laten horen, van websitecopy tot een reeks posts.</p></article>
+<article class="card"><span class="num">05</span><h3>Projectondersteuning</h3><p>Een idee dat nog in je hoofd zit? Ik denk mee, maak het concreet en help het van de grond te komen.</p></article>
+</div>
+</div>
+</section>
+<section id="over-mij">
+<div class="wrap two-col">
+<div><img src="natasja-portrait.jpeg" alt="Natasja Schut, creatief ondernemer" /></div>
+<div class="body">
+<p class="eyebrow">Over mij</p>
+<h2 class="display">Met aandacht gemaakt.</h2>
+<p>Ik ben Natasja. Ik krijg energie van bedenken, maken en organiseren — of het nu gaat om een website, een project of een verhaal dat nog vorm moet krijgen. ByNatasja groeit stap voor stap, vanuit de dingen die ik leuk vind en waar ik goed in ben. Ik werk graag samen: eerst luisteren, dan maken.</p>
+<p class="meta">Natasja · Lochem · beschikbaar wereldwijd</p>
+</div>
+</div>
+</section>
+<section id="werkwijze" class="process">
+<div class="wrap pad">
+<div class="sec-head">
+<p class="eyebrow">Werkwijze</p>
+<h2 class="display">Van idee naar aanwezigheid.</h2>
+</div>
+<div class="steps">
+<div class="step"><span class="num">01</span><h3>Luisteren</h3><p>We zoeken naar wat er onder de vraag ligt.</p></div>
+<div class="step"><span class="num">02</span><h3>Vormen</h3><p>We vertalen jouw verhaal naar richting, tekst en design.</p></div>
+<div class="step"><span class="num">03</span><h3>Bewegen</h3><p>Je gaat naar buiten met iets dat klopt en waar je blij mee bent.</p></div>
+</div>
+</div>
+</section>
+<section id="werk">
+<div class="wrap two-col land">
+<div class="body">
+<p class="eyebrow">Werk</p>
+<h2 class="display">Een blik op eerder werk.</h2>
+<p>Van websites tot fotografie en content. Bekijk een selectie van projecten en verhalen in mijn portfolio.</p>
+<a class="btn" style="margin-top:32px" href="https://natasja24.github.io/Natasjachutportofolio/" target="_blank" rel="noreferrer">Bekijk het portfolio</a>
+</div>
+<div><img src="01foto.jpg" alt="Voorbeeld van eerder werk" /></div>
+</section>
+<section id="contact" class="contact">
+<div class="wrap two-col land">
+<div class="body">
+<p class="eyebrow">Contact</p>
+<h2 class="display">Vertel me waar je aan denkt.</h2>
+<p>Heb je een idee, een vraag of een project waar je hulp bij kunt gebruiken? Stuur een bericht — ik denk graag met je mee.</p>
+<a class="mail" href="mailto:Bynatasja.business@hotmail.com">Bynatasja.business@hotmail.com</a>
+<p class="meta">Lochem · beschikbaar wereldwijd</p>
+</div>
+<div><img src="natas.jpg" alt="Contact opnemen met Natasja Schut" /></div>
+</div>
+</section>
+</main>
+<footer>
+<div class="foot-inner">
+<a href="#top" class="wordmark"><span class="by">BY</span><span class="nat">NATASJA</span></a>
+<p class="copy">© 2026 Bynatasja. Gemaakt met aandacht.</p>
+<div class="foot-links">
+<a href="https://www.instagram.com/" target="_blank" rel="noreferrer">Instagram</a>
+<a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a>
+</div>
+</div>
+</footer>
+<script>
+(function(){
+var btn=document.getElementById('menuBtn');
+var nav=document.getElementById('nav');
+if(btn&&nav){
+btn.addEventListener('click',function(){
+var open=nav.classList.toggle('open');
+btn.setAttribute('aria-expanded',open?'true':'false');
+btn.setAttribute('aria-label',open?'Menu sluiten':'Menu openen');
+});
+nav.querySelectorAll('a').forEach(function(a){
+a.addEventListener('click',function(){nav.classList.remove('open');btn.setAttribute('aria-expanded','false');});
+});
+}
+})();
+</script>
 </body>
 </html>

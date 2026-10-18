@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact · BYNATASJA</title>
+  <meta name="description" content="Neem contact op met Bynatasja — webdesign, digitale ondersteuning en creatieve content. Gevestigd in Lochem, beschikbaar wereldwijd." />
+  <!-- Alle opmaak staat hieronder in dit ene bestand. -->
+  <style>
+/* ============================================================
+   BYNATASJA — contactpagina
+   Zachte rood / rosé stijl. Geen externe bronnen nodig.
+   ============================================================ */
+
+:root {
+  /* Kleurenpalet — zacht rood / rosé */
+  --bg: #fdf7f5;          /* warm crème / off-white achtergrond */
+  --surface: #ffffff;     /* kaarten */
+  --primary: #d97b74;     /* zacht rood (hoofdkleur) */
+  --accent: #c8564f;      /* dieper rood accent */
+  --soft: #e8b4ae;        /* licht rosé */
+  --heading: #2e2724;     /* warm bijna-zwart voor koppen */
+  --text: #2e2724;        /* broodtekst */
+  --muted: #6b5a56;       /* gedempte tekst */
+  --border: #f0dcd8;      /* randen / scheidingslijnen */
+  --tint: #fbeeec;        /* subtiele tintvlakken */
+
+  --radius: 16px;
+  --shadow: 0 10px 30px rgba(200, 86, 79, 0.10);
+  --shadow-hover: 0 16px 40px rgba(200, 86, 79, 0.18);
+  --maxw: 1140px;
+  --font: "Inter", "Poppins", -apple-system, BlinkMacSystemFont,
+          "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  color: var(--heading);
+  line-height: 1.2;
+  margin: 0 0 0.5em;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+p { margin: 0 0 1em; }
+
+a { color: var(--accent); }
+
+.container {
+  width: 100%;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ---------- Header ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(253, 247, 245, 0.9);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 68px;
+  flex-wrap: wrap;
+}
+
+.wordmark {
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  font-size: 1.05rem;
+  color: var(--heading);
+  text-decoration: none;
+}
+
+.wordmark-small { font-size: 0.95rem; }
+
+.main-nav {
+  display: flex;
+  gap: 22px;
+  flex-wrap: wrap;
+}
+
+.main-nav a {
+  text-decoration: none;
+  color: var(--muted);
+  font-size: 0.95rem;
+  padding: 4px 2px;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.main-nav a:hover,
+.main-nav a:focus-visible {
+  color: var(--accent);
+  border-color: var(--primary);
+}
+
+.main-nav a.is-active {
+  color: var(--accent);
+  border-color: var(--primary);
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  background:
+    radial-gradient(120% 120% at 50% -20%, var(--tint) 0%, var(--bg) 60%);
+  padding: 72px 0 56px;
+  text-align: center;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.78rem;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+
+.hero h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin-bottom: 16px;
+}
+
+.hero-lead {
+  max-width: 620px;
+  margin: 0 auto;
+  color: var(--muted);
+  font-size: 1.08rem;
+}
+
+/* ---------- Secties ---------- */
+.section { padding: 52px 0; }
+
+.section-tint {
+  background: var(--tint);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.section-title { font-size: clamp(1.4rem, 3vw, 1.9rem); }
+
+.section-sub {
+  color: var(--muted);
+  margin-bottom: 32px;
+}
+
+/* ---------- Kaarten ---------- */
+.cards-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 22px;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px 26px;
+  box-shadow: var(--shadow);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.card:hover,
+.card:focus-within {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--primary);
+}
+
+.card-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: var(--tint);
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+.card-title { font-size: 1.12rem; margin-bottom: 8px; }
+
+.card-mail {
+  display: inline-block;
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+  word-break: break-word;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease;
+}
+
+.card-mail:hover,
+.card-mail:focus-visible { border-color: var(--accent); }
+
+.card-desc {
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin: 12px 0 0;
+}
+
+/* ---------- Formulier ---------- */
+.form-wrap { max-width: 720px; }
+
+.contact-form {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 30px 26px;
+  box-shadow: var(--shadow);
+}
+
+.field { margin-bottom: 18px; }
+
+.field label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--heading);
+  margin-bottom: 6px;
+}
+
+.field input,
+.field textarea {
+  width: 100%;
+  font: inherit;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 14px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.field input:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(217, 123, 116, 0.22);
+}
+
+.field.has-error input,
+.field.has-error textarea { border-color: var(--accent); }
+
+.field-error {
+  display: block;
+  min-height: 1em;
+  font-size: 0.82rem;
+  color: var(--accent);
+  margin-top: 5px;
+}
+
+.btn-primary {
+  font: inherit;
+  font-weight: 600;
+  color: #fff;
+  background: var(--primary);
+  border: none;
+  border-radius: 10px;
+  padding: 13px 30px;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.btn-primary:hover { background: var(--accent); }
+.btn-primary:active { transform: translateY(1px); }
+
+.btn-primary:focus-visible {
+  outline: 3px solid rgba(217, 123, 116, 0.5);
+  outline-offset: 2px;
+}
+
+.form-note {
+  margin: 16px 0 0;
+  font-size: 0.95rem;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.form-note.is-success { color: var(--accent); }
+
+/* ---------- Contactgegevens ---------- */
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+}
+
+.info-heading { font-size: 1.05rem; margin-bottom: 12px; }
+
+.info-line {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+
+.status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--primary);
+  box-shadow: 0 0 0 4px rgba(217, 123, 116, 0.22);
+}
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-right: 18px;
+  padding: 8px 14px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 0.92rem;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.social-link:hover,
+.social-link:focus-visible {
+  border-color: var(--primary);
+  background: var(--tint);
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  border-top: 1px solid var(--border);
+  background: var(--tint);
+  padding: 40px 0;
+  text-align: center;
+}
+
+.footer-line {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin: 6px 0 0;
+}
+
+/* ---------- Scroll-reveal ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.is-visible { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  html { scroll-behavior: auto; }
+}
+
+/* ---------- Responsief ---------- */
+@media (min-width: 640px) {
+  .cards-grid { grid-template-columns: repeat(2, 1fr); }
+  .info-grid { grid-template-columns: 1.4fr 1fr; align-items: start; }
+}
+
+@media (min-width: 960px) {
+  .cards-grid { grid-template-columns: repeat(3, 1fr); }
+  .hero { padding: 110px 0 90px; }
+}
+
+@media (max-width: 520px) {
+  .header-inner { justify-content: center; text-align: center; }
+  .main-nav { justify-content: center; }
+}
+  </style>
+</head>
+<body>
+
+  <!-- ============ HEADER / NAVIGATIE ============ -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="wordmark" href="#top">BYNATASJA</a>
+      <nav class="main-nav" aria-label="Hoofdnavigatie">
+        <a href="#top">Home</a>
+        <a href="#over">Over</a>
+        <a href="#diensten">Diensten</a>
+        <a href="#contact" class="is-active" aria-current="page">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ============ HERO / INTRO ============ -->
+    <section class="hero" id="over">
+      <div class="container hero-inner">
+        <p class="eyebrow">Contact</p>
+        <h1>Laten we kennismaken</h1>
+        <p class="hero-lead">
+          Vertel me over je idee of project. Ik denk graag met je mee —
+          van webdesign tot digitale ondersteuning en creatieve content.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============ CONTACTKAARTEN ============ -->
+    <section class="section" id="diensten" aria-labelledby="kaarten-titel">
+      <div class="container">
+        <h2 id="kaarten-titel" class="section-title">Direct contact</h2>
+        <p class="section-sub">Kies het onderwerp dat bij jouw vraag past.</p>
+
+        <div class="cards-grid">
+
+          <!-- Kaart 1 — het bevestigde adres van bynatasja.com -->
+          <article class="card reveal">
+            <span class="card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2.5" y="4.5" width="19" height="15" rx="2.5" />
+                <path d="M3 6.5l9 6 9-6" />
+              </svg>
+            </span>
+            <h3 class="card-title">Algemeen &amp; samenwerkingen</h3>
+            <a class="card-mail" href="mailto:Bynatasja.business@hotmail.com">Bynatasja.business@hotmail.com</a>
+            <p class="card-desc">Voor algemene vragen, samenwerkingen en alles wat nog geen vast onderwerp heeft.</p>
+          </article>
+
+          <!-- EXTRA E-MAIL: pas dit aan -->
+          <!-- Vervang het adres (op twee plekken: in href en in de zichtbare tekst)
+               en het label hieronder door jouw echte e-mailadres. -->
+          <article class="card reveal">
+            <span class="card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2.5" y="4" width="19" height="14" rx="2.5" />
+                <path d="M8 21h8M12 18v3" />
+              </svg>
+            </span>
+            <h3 class="card-title">Websites &amp; webdesign</h3>
+            <a class="card-mail" href="mailto:Bynatasja.business@hotmail.com">Bynatasja.business@hotmail.com</a>
+            <p class="card-desc">Voor een nieuwe website, een redesign of vragen over webdesign.</p>
+          </article>
+
+          <!-- EXTRA E-MAIL: pas dit aan -->
+          <!-- Vervang het adres (op twee plekken: in href en in de zichtbare tekst)
+               en het label hieronder door jouw echte e-mailadres. -->
+          <article class="card reveal">
+            <span class="card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 3.5l8 4.5v8l-8 4.5-8-4.5v-8z" />
+                <path d="M12 12l8-4.5M12 12v8.5M12 12L4 7.5" />
+              </svg>
+            </span>
+            <h3 class="card-title">Digitale ondersteuning</h3>
+            <a class="card-mail" href="mailto:Bynatasja.business@hotmail.com">Bynatasja.business@hotmail.com</a>
+            <p class="card-desc">Voor digitale ondersteuning, projectondersteuning en idee-uitwerking.</p>
+          </article>
+
+          <!-- EXTRA E-MAIL: pas dit aan -->
+          <!-- Vervang het adres (op twee plekken: in href en in de zichtbare tekst)
+               en het label hieronder door jouw echte e-mailadres. -->
+          <article class="card reveal">
+            <span class="card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 8.5h3l1.5-2h7L17 8.5h3a1.5 1.5 0 0 1 1.5 1.5v8A1.5 1.5 0 0 1 20 19.5H4A1.5 1.5 0 0 1 2.5 18v-8A1.5 1.5 0 0 1 4 8.5z" />
+                <circle cx="12" cy="13.5" r="3.2" />
+              </svg>
+            </span>
+            <h3 class="card-title">Fotografie &amp; content</h3>
+            <a class="card-mail" href="mailto:Bynatasja.business@hotmail.com">Bynatasja.business@hotmail.com</a>
+            <p class="card-desc">Voor fotografie, verhalen, content en creatieve idee-uitwerking.</p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACTFORMULIER ============ -->
+    <!-- LET OP: dit is een demo-formulier ZONDER backend. Het verstuurt niets.
+         script.js vangt het af, controleert de velden en toont een vriendelijke
+         bevestiging. Klaar om later aan een echte verzendservice te koppelen. -->
+    <section class="section section-tint" id="contact" aria-labelledby="form-titel">
+      <div class="container form-wrap">
+        <div class="form-intro">
+          <h2 id="form-titel" class="section-title">Stuur een bericht</h2>
+          <p class="section-sub">Vul het formulier in en ik neem zo snel mogelijk contact met je op.</p>
+        </div>
+
+        <form class="contact-form" id="contactForm" novalidate>
+          <div class="field">
+            <label for="naam">Naam</label>
+            <input type="text" id="naam" name="naam" autocomplete="name" required />
+            <span class="field-error" data-error-for="naam"></span>
+          </div>
+
+          <div class="field">
+            <label for="email">E-mailadres</label>
+            <input type="email" id="email" name="email" autocomplete="email" required />
+            <span class="field-error" data-error-for="email"></span>
+          </div>
+
+          <div class="field">
+            <label for="bericht">Bericht</label>
+            <textarea id="bericht" name="bericht" rows="5" required></textarea>
+            <span class="field-error" data-error-for="bericht"></span>
+          </div>
+
+          <button type="submit" class="btn-primary">Verstuur</button>
+
+          <p class="form-note" id="formStatus" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+    <!-- ============ CONTACTGEGEVENS ============ -->
+    <section class="section" aria-labelledby="info-titel">
+      <div class="container info-grid">
+        <div class="info-block">
+          <h2 id="info-titel" class="section-title">Contactgegevens</h2>
+          <p class="info-line">
+            <span class="status-dot" aria-hidden="true"></span>
+            Beschikbaar voor opdrachten
+          </p>
+          <p class="info-line">Bynatasja &middot; Lochem &middot; beschikbaar wereldwijd</p>
+        </div>
+
+        <div class="info-block">
+          <h3 class="info-heading">Volg mee</h3>
+          <!-- VERVANG de href="#" hieronder door de echte Instagram-URL -->
+          <a class="social-link" href="#" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="3" width="18" height="18" rx="5" />
+              <circle cx="12" cy="12" r="4" />
+              <circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none" />
+            </svg>
+            Instagram
+          </a>
+          <!-- VERVANG de href="#" hieronder door de echte LinkedIn-URL -->
+          <a class="social-link" href="#" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="3" width="18" height="18" rx="3" />
+              <path d="M7.5 10.5v6M7.5 7.6v.1M11.5 16.5v-3.4a2 2 0 0 1 4 0v3.4" />
+            </svg>
+            LinkedIn
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span class="wordmark wordmark-small">BYNATASJA</span>
+      <p class="footer-line">Bynatasja &middot; Lochem &middot; beschikbaar wereldwijd</p>
+      <p class="footer-line">&copy; <span id="year">2026</span> Bynatasja</p>
+    </div>
+  </footer>
+
+  <!-- Alle interactie staat hieronder in dit ene bestand. -->
+  <script>
+/* ============================================================
+   BYNATASJA — contactpagina interactie
+   Vanilla JavaScript, geen externe afhankelijkheden.
+   ============================================================ */
+
+(function () {
+  "use strict";
+
+  /* ---------- 1. Huidig jaar in de footer ---------- */
+  var yearEl = document.getElementById("year");
+  if (yearEl) {
+    yearEl.textContent = String(new Date().getFullYear());
+  }
+
+  /* ---------- 2. Formuliervalidatie + demo-bevestiging ---------- */
+  var form = document.getElementById("contactForm");
+  var statusEl = document.getElementById("formStatus");
+
+  // Eenvoudige e-mailcontrole (bewust ruim gehouden).
+  var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  function setError(field, message) {
+    var wrapper = field.closest(".field");
+    var errorEl = wrapper ? wrapper.querySelector(".field-error") : null;
+    if (wrapper) wrapper.classList.toggle("has-error", Boolean(message));
+    if (errorEl) errorEl.textContent = message || "";
+  }
+
+  function validateField(field) {
+    var value = (field.value || "").trim();
+
+    if (!value) {
+      setError(field, "Dit veld is verplicht.");
+      return false;
+    }
+    if (field.type === "email" && !EMAIL_RE.test(value)) {
+      setError(field, "Vul een geldig e-mailadres in.");
+      return false;
+    }
+    setError(field, "");
+    return true;
+  }
+
+  if (form) {
+    var fields = Array.prototype.slice.call(
+      form.querySelectorAll("input, textarea")
+    );
+
+    // Live feedback zodra een veld is aangeraakt.
+    fields.forEach(function (field) {
+      field.addEventListener("blur", function () {
+        validateField(field);
+      });
+      field.addEventListener("input", function () {
+        if (field.closest(".field").classList.contains("has-error")) {
+          validateField(field);
+        }
+      });
+    });
+
+    form.addEventListener("submit", function (event) {
+      // Demo-formulier: er wordt NIETS verstuurd.
+      event.preventDefault();
+
+      var allValid = true;
+      var firstInvalid = null;
+
+      fields.forEach(function (field) {
+        var ok = validateField(field);
+        if (!ok && !firstInvalid) firstInvalid = field;
+        allValid = allValid && ok;
+      });
+
+      if (!allValid) {
+        if (statusEl) {
+          statusEl.textContent = "Controleer de gemarkeerde velden.";
+          statusEl.classList.remove("is-success");
+        }
+        if (firstInvalid) firstInvalid.focus();
+        return;
+      }
+
+      if (statusEl) {
+        statusEl.textContent =
+          "Bedankt! Je bericht is klaar om te verzenden.";
+        statusEl.classList.add("is-success");
+      }
+      form.reset();
+      fields.forEach(function (field) { setError(field, ""); });
+    });
+  }
+
+  /* ---------- 3. Scroll-reveal (degradeert netjes) ---------- */
+  var revealEls = document.querySelectorAll(".reveal");
+
+  if ("IntersectionObserver" in window && revealEls.length) {
+    var observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+
+    revealEls.forEach(function (el) { observer.observe(el); });
+  } else {
+    // Geen ondersteuning: toon alles direct.
+    revealEls.forEach(function (el) { el.classList.add("is-visible"); });
+  }
+})();
+  </script>
+</body>
+</html>
